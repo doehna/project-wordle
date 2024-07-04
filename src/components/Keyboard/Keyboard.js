@@ -15,16 +15,17 @@ function Keyboard({ guessList }) {
     guess.letters.forEach((guessLetter) => {
       let element = keyboard.find((item) => item.letter === guessLetter.letter);
       if (element) {
-        if (
-          !(
-            ((guessLetter.status === "misplaced" ||
-              guessLetter.status === "incorrect") &&
-              element.status === "correct") ||
-            (guessLetter.status === "incorrect" &&
-              (element.status === "correct" || 
-              element.status === "misplaced"))
-          )
-        ) {
+        let isNewStatusWorseThanCorrect =
+          (guessLetter.status === "misplaced" ||
+            guessLetter.status === "incorrect") &&
+          element.status === "correct";
+        let isOldStatusBetterThanIncorrect =
+          guessLetter.status === "incorrect" &&
+          (element.status === "correct" || element.status === "misplaced");
+        let isNewStatusBetterThanOldStatus = !(
+          isNewStatusWorseThanCorrect || isOldStatusBetterThanIncorrect
+        );
+        if (isNewStatusBetterThanOldStatus) {
           element.status = guessLetter.status;
         }
       }
