@@ -17,9 +17,12 @@ function Keyboard({ guessList }) {
       if (element) {
         if (
           !(
-            (guessLetter.status === "misplaced" ||
+            ((guessLetter.status === "misplaced" ||
               guessLetter.status === "incorrect") &&
-            element.status === "correct"
+              element.status === "correct") ||
+            (guessLetter.status === "incorrect" &&
+              (element.status === "correct" || 
+              element.status === "misplaced"))
           )
         ) {
           element.status = guessLetter.status;
