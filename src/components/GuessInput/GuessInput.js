@@ -44,6 +44,9 @@ function GuessInput({ getState, answer }) {
     >
       <label htmlFor="guess-input">Enter guess:</label>
       <input
+        required
+        minLength={NUM_OF_LETTERS_ALLOWED}
+        maxLength={NUM_OF_LETTERS_ALLOWED}
         name="guess-input"
         type="text"
         value={guessInput.toUpperCase()}

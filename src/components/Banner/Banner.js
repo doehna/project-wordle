@@ -1,10 +1,6 @@
 import React from "react";
 
 function Banner({style, resetAllStates, children}) {
-  const resetAnswer = () => {
-    setAnswerState();
-  }
-
   return (
     <div className={style}>
       <p>

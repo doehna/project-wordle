@@ -94,7 +94,7 @@ function Game() {
       </div>
       <GuessInput getState={getState} answer={answer}></GuessInput>
       <Keyboard guessList={guessList}></Keyboard>
-      <Banner
+      {result.status ? <Banner
         style={
           result.status === "win"
             ? "happy banner"
@@ -105,7 +105,7 @@ function Game() {
         resetAllStates={resetAllStates}
       >
         {getBannerMessage()}
-      </Banner>
+      </Banner> : ""}
     </>
   );
 }
